@@ -5,6 +5,8 @@ namespace UzInfo\LaravelApiGenerator;
 use Illuminate\Support\ServiceProvider;
 use UzInfo\LaravelApiGenerator\Commands\Bread;
 use UzInfo\LaravelApiGenerator\Commands\MakeControllerApi;
+use UzInfo\LaravelApiGenerator\Commands\MakeMigrationApi;
+use UzInfo\LaravelApiGenerator\Commands\MakeModelApi;
 use UzInfo\LaravelApiGenerator\Commands\MakeRepositoryApi;
 use UzInfo\LaravelApiGenerator\Commands\MakeRequestApi;
 use UzInfo\LaravelApiGenerator\Commands\MakeResourceApi;
@@ -28,6 +30,8 @@ class LaravelApiGeneratorServiceProvider extends ServiceProvider
             $this->commands([
                 Bread::class,
                 MakeControllerApi::class,
+                MakeMigrationApi::class,
+                MakeModelApi::class,
                 MakeRepositoryApi::class,
                 MakeRequestApi::class,
                 MakeResourceApi::class,

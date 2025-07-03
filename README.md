@@ -9,6 +9,8 @@ Laravel API Generator - bu Laravel loyihalar uchun API komponentlarini tez va os
 
 ## 🚀 Xususiyatlar
 
+- **Models** - Eloquent modellari yaratish (SoftDeletes bilan)
+- **Migrations** - Ma'lumotlar bazasi migratsiyalari (field definition bilan)
 - **Controllers** - API kontrollerlari yaratish
 - **Services** - Biznes logika servislari
 - **Repositories** - Ma'lumotlar bazasi bilan ishlash layerlari  
@@ -36,6 +38,18 @@ php artisan vendor:publish --tag=api-generator-stubs
 ### Ayrim komponentlar yaratish
 
 ```bash
+# Model yaratish
+php artisan make:model-api User
+
+# Model va migration birga yaratish
+php artisan make:model-api User --migration
+
+# Model field'lar bilan yaratish
+php artisan make:model-api User --fillable="name,email,phone" --casts="email_verified_at:datetime,is_active:boolean"
+
+# Migration yaratish
+php artisan make:migration-api create_users_table --fields="name:string,email:string:unique,phone:string:nullable"
+
 # Controller yaratish
 php artisan make:controller-api UserController
 
@@ -60,9 +74,17 @@ php artisan make:request-api StoreUserRequest
 ```bash
 # Barcha kerakli fayllarni bir buyruq bilan yaratish
 php artisan make:bread User
+
+# Field'lar bilan yaratish
+php artisan make:bread User --fields="name:string,email:string:unique,phone:string:nullable,is_active:boolean:default:true"
+
+# Faqat kodlarni yaratish (model va migration'siz)
+php artisan make:bread User --no-model --no-migration
 ```
 
 Bu buyruq quyidagi fayllarni yaratadi:
+- `app/Models/User.php`
+- `database/migrations/****_create_users_table.php`
 - `app/Http/Controllers/UserController.php`
 - `app/Services/UserService.php` 
 - `app/Repositories/UserRepository.php`
@@ -75,6 +97,8 @@ Bu buyruq quyidagi fayllarni yaratadi:
 
 ```
 app/
+├── Models/
+│   └── User.php
 ├── Http/
 │   ├── Controllers/
 │   │   └── UserController.php
@@ -88,8 +112,11 @@ app/
 │           └── UserResourceList.php
 ├── Repositories/
 │   └── UserRepository.php
-└── Services/
-    └── UserService.php
+├── Services/
+│   └── UserService.php
+database/
+└── migrations/
+    └── 2024_07_03_120000_create_users_table.php
 ```
 
 ## 🎯 Traitlar

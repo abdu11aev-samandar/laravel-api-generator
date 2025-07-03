@@ -4,6 +4,25 @@ Laravel API Generator package uchun barcha muhim o'zgarishlar shu yerda qayd eti
 
 ## [Unreleased]
 
+## [1.1.0] - 2024-07-03
+
+### Added
+- `make:model-api` - Eloquent model yaratish
+- `make:migration-api` - Database migration yaratish
+- Model generator'da SoftDeletes qo'llab-quvvatlash
+- Migration generator'da field definition parser
+- BREAD command'ga model va migration integratsiya
+- Advanced field type qo'llab-quvvatlash (string, integer, boolean, decimal, etc.)
+- Field modifiers (nullable, unique, index, default values)
+- Emoji-based progress indicators
+- Detailed file generation summary
+
+### Enhanced
+- BREAD command yangilandi va model/migration qo'shildi
+- --fields option barcha commandlarda
+- --no-model va --no-migration options
+- Service Provider'ga yangi commandlar qo'shildi
+
 ## [1.0.0] - 2024-07-03
 
 ### Added

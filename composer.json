@@ -1,6 +1,6 @@
 {
     "name": "uzinfo/laravel-api-generator",
-    "description": "Laravel API generator package for creating controllers, services, repositories, resources and requests with stubs",
+    "description": "Laravel API generator package for creating models, migrations, controllers, services, repositories, resources and requests with advanced field definitions",
     "type": "library",
     "license": "MIT",
     "authors": [
