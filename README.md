@@ -44,11 +44,8 @@ php artisan make:model-api User
 # Model va migration birga yaratish
 php artisan make:model-api User --migration
 
-# Model field'lar bilan yaratish
-php artisan make:model-api User --fillable="name,email,phone" --casts="email_verified_at:datetime,is_active:boolean"
-
 # Migration yaratish
-php artisan make:migration-api create_users_table --fields="name:string,email:string:unique,phone:string:nullable"
+php artisan make:migration-api create_users_table
 
 # Controller yaratish
 php artisan make:controller-api UserController
@@ -74,12 +71,6 @@ php artisan make:request-api StoreUserRequest
 ```bash
 # Barcha kerakli fayllarni bir buyruq bilan yaratish
 php artisan make:bread User
-
-# Field'lar bilan yaratish
-php artisan make:bread User --fields="name:string,email:string:unique,phone:string:nullable,is_active:boolean:default:true"
-
-# Faqat kodlarni yaratish (model va migration'siz)
-php artisan make:bread User --no-model --no-migration
 ```
 
 Bu buyruq quyidagi fayllarni yaratadi:

@@ -23,7 +23,7 @@ class {{ class }} extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        {{ fillable }}
+        // Add your fillable fields here
     ];
 
     /**
@@ -41,7 +41,7 @@ class {{ class }} extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        {{ casts }}
+        // Add your casts here
     ];
 
     /**

@@ -17,33 +17,10 @@ class MakeModelApi extends GeneratorCommand
         $stub = parent::replaceClass($stub, $name);
         $model = $this->getNameInput();
         $table = $this->option('table') ?: $this->getTableName($model);
-        $fillable = $this->option('fillable') ?: '';
-        $casts = $this->option('casts') ?: '';
         
-        // Process fillable fields
-        $fillableArray = '';
-        if ($fillable) {
-            $fields = array_map('trim', explode(',', $fillable));
-            $fillableArray = "'" . implode("',\n        '", $fields) . "'";
-        }
-
-        // Process casts
-        $castsArray = '';
-        if ($casts) {
-            $castPairs = array_map('trim', explode(',', $casts));
-            $castsFormatted = [];
-            foreach ($castPairs as $pair) {
-                if (strpos($pair, ':') !== false) {
-                    [$field, $cast] = explode(':', $pair, 2);
-                    $castsFormatted[] = "'" . trim($field) . "' => '" . trim($cast) . "'";
-                }
-            }
-            $castsArray = implode(",\n        ", $castsFormatted);
-        }
-
         return str_replace(
-            ['{{ Model }}', '{{ table }}', '{{ fillable }}', '{{ casts }}'],
-            [$model, $table, $fillableArray, $castsArray],
+            ['{{ Model }}', '{{ table }}'],
+            [$model, $table],
             $stub
         );
     }
@@ -70,8 +47,6 @@ class MakeModelApi extends GeneratorCommand
         return [
             ['migration', 'm', InputOption::VALUE_NONE, 'Create a new migration file for the model'],
             ['table', 't', InputOption::VALUE_OPTIONAL, 'The table name for the model'],
-            ['fillable', 'f', InputOption::VALUE_OPTIONAL, 'Comma-separated list of fillable fields'],
-            ['casts', 'c', InputOption::VALUE_OPTIONAL, 'Comma-separated list of field:cast pairs'],
         ];
     }
 
@@ -95,12 +70,10 @@ class MakeModelApi extends GeneratorCommand
     {
         $model = $this->getNameInput();
         $table = $this->option('table') ?: $this->getTableName($model);
-        $fillable = $this->option('fillable') ?: '';
         
         $this->call('make:migration-api', [
             'name' => 'create_' . $table . '_table',
             '--table' => $table,
-            '--fields' => $fillable,
         ]);
     }
 }

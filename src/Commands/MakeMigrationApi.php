@@ -18,10 +18,9 @@ class MakeMigrationApi extends GeneratorCommand
         $stub = parent::replaceClass($stub, $name);
         
         $table = $this->option('table') ?: $this->getTableFromName($name);
-        $fields = $this->option('fields') ?: '';
         $className = $this->getClassName($name);
         
-        $fieldsDefinition = $this->generateFieldsDefinition($fields);
+        $fieldsDefinition = $this->generateFieldsDefinition('');
         
         return str_replace(
             ['{{ class }}', '{{ table }}', '{{ fields }}'],
@@ -60,7 +59,6 @@ class MakeMigrationApi extends GeneratorCommand
     {
         return [
             ['table', 't', InputOption::VALUE_OPTIONAL, 'The table name'],
-            ['fields', 'f', InputOption::VALUE_OPTIONAL, 'Comma-separated list of field definitions'],
         ];
     }
 
