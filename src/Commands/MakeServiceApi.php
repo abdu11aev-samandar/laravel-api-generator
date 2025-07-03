@@ -57,7 +57,7 @@ class MakeServiceApi extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . "/../Stubs/service.api.stub".DIRECTORY_SEPARATOR.'stubs/service.api.stub)';
+        return __DIR__ . "/../Stubs/service.api.stub";
     }
 
     /**

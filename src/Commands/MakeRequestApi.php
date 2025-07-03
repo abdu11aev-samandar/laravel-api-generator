@@ -56,7 +56,7 @@ class MakeRequestApi extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . "/../Stubs/request.api.controller.stub".DIRECTORY_SEPARATOR.'stubs/request.api.controller.stub)';
+        return __DIR__ . "/../Stubs/request.api.controller.stub";
     }
 
     /**
