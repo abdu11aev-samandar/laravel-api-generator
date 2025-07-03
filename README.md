@@ -1,5 +1,10 @@
 # Laravel API Generator
 
+[![Latest Version](https://img.shields.io/packagist/v/uzinfo/laravel-api-generator.svg?style=flat-square)](https://packagist.org/packages/uzinfo/laravel-api-generator)
+[![Total Downloads](https://img.shields.io/packagist/dt/uzinfo/laravel-api-generator.svg?style=flat-square)](https://packagist.org/packages/uzinfo/laravel-api-generator)
+[![License](https://img.shields.io/packagist/l/uzinfo/laravel-api-generator.svg?style=flat-square)](https://packagist.org/packages/uzinfo/laravel-api-generator)
+[![PHP Version](https://img.shields.io/packagist/php-v/uzinfo/laravel-api-generator.svg?style=flat-square)](https://packagist.org/packages/uzinfo/laravel-api-generator)
+
 Laravel API Generator - bu Laravel loyihalar uchun API komponentlarini tez va oson yaratish uchun mo'ljallangan package.
 
 ## 🚀 Xususiyatlar
