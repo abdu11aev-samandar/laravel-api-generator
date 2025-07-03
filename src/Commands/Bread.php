@@ -3,7 +3,6 @@
 namespace UzInfo\LaravelApiGenerator\Commands;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputOption;
 
 class Bread extends Command
 {
@@ -12,7 +11,7 @@ class Bread extends Command
      *
      * @var string
      */
-    protected $signature = 'make:bread {model} {--fields= : Comma-separated list of field definitions} {--no-migration : Skip migration generation} {--no-model : Skip model generation}';
+    protected $signature = 'make:bread {model}';
 
     /**
      * The console command description.
@@ -29,38 +28,16 @@ class Bread extends Command
     public function handle()
     {
         $model = $this->argument('model');
-        $fields = $this->option('fields');
         
         $this->info('🚀 Creating BREAD components for model: ' . $model);
         $this->newLine();
         
-        // Create Model and Migration first (if not skipped)
-        if (!$this->option('no-model')) {
-            $this->comment('📊 Creating Model...');
-            $modelOptions = ['name' => $model];
-            
-            if ($fields) {
-                $modelOptions['--fillable'] = $fields;
-            }
-            
-            if (!$this->option('no-migration')) {
-                $modelOptions['--migration'] = true;
-            }
-            
-            $this->call('make:model-api', $modelOptions);
-        } elseif (!$this->option('no-migration')) {
-            $this->comment('📁 Creating Migration...');
-            $migrationOptions = [
-                'name' => 'create_' . strtolower($model) . 's_table',
-                '--table' => strtolower($model) . 's'
-            ];
-            
-            if ($fields) {
-                $migrationOptions['--fields'] = $fields;
-            }
-            
-            $this->call('make:migration-api', $migrationOptions);
-        }
+        // Create Model and Migration
+        $this->comment('📊 Creating Model...');
+        $this->call('make:model-api', [
+            'name' => $model,
+            '--migration' => true
+        ]);
         
         // Create other components
         $list_actions = [
