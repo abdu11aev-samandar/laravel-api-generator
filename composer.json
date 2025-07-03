@@ -1,0 +1,54 @@
+{
+    "name": "uzinfo/laravel-api-generator",
+    "description": "Laravel API generator package for creating controllers, services, repositories, resources and requests with stubs",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "UzInfo Team",
+            "email": "dev@uzinfo.uz"
+        }
+    ],
+    "keywords": [
+        "laravel",
+        "api",
+        "generator",
+        "artisan",
+        "commands",
+        "crud",
+        "resource",
+        "repository",
+        "service"
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/console": "^10.0|^11.0|^12.0",
+        "illuminate/support": "^10.0|^11.0|^12.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0|^9.0",
+        "phpunit/phpunit": "^10.0|^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "UzInfo\\LaravelApiGenerator\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "UzInfo\\LaravelApiGenerator\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "UzInfo\\LaravelApiGenerator\\LaravelApiGeneratorServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
